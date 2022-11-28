@@ -1,5 +1,7 @@
 import os
 from matplotlib.pyplot import imread
+import numpy as np
+from sklearn.preprocessing import OneHotEncoder
 
 def load_data(path, raw_data_folder = 'raw', nb_imgs=1100):
     '''
@@ -28,4 +30,7 @@ def load_data(path, raw_data_folder = 'raw', nb_imgs=1100):
             except:
                 print(os.path.join(path, f, f'image_{i}.png'), ' is missing!')
 
-    return X, y
+        encoder = OneHotEncoder(sparse=False)
+        y = encoder.fit_transform(y)
+
+    return np.array(X), np.array(y)
