@@ -1,12 +1,10 @@
 import os
 from matplotlib.pyplot import imread
 
-def load_data(path):
+def load_data(path, nb_imgs=1100):
     '''
     Function loading our data into image and target
     '''
-
-    nb_imgs = 1100
 
     folders  = ['AmongUs','ApexLegends',
                 'Fortnite','ForzaHorizon',
