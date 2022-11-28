@@ -1,7 +1,7 @@
 import os
 from matplotlib.pyplot import imread
 
-def load_data(path, nb_imgs=1100):
+def load_data(path, raw_data_folder = 'raw', nb_imgs=1100):
     '''
     Function loading our data into image and target
     '''
@@ -19,7 +19,7 @@ def load_data(path, nb_imgs=1100):
         for i in range(nb_imgs):
 
             try:
-                n_path = os.path.join(path,'original', f, f'image_{i}.png')
+                n_path = os.path.join(path,raw_data_folder, f, f'image_{i}.png')
 
                 X.append(imread(n_path)[:, :, :3])
 
