@@ -26,7 +26,3 @@ async def create_file(img: UploadFile=File(...)):
     for i, p in enumerate(pred):
         if p == 1:
             return dict(prediction=GAMES_DICT[i])
-
-@app.post("/uploadfile/")
-async def create_upload_file(file: UploadFile):
-    return {"filename": file.filename}
