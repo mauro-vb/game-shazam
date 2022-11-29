@@ -1,16 +1,16 @@
 import os
 from pytube import YouTube
 import get_frames
+from delete_data import delete_img, delete_vid
 from snake_case import snake
 from get_vid_ids import get_ids
-from delete_data import delete
 
 ### MAIN ###
 
 # Admin input:
-game = "t3 arena"
+game = "street fighter"
 n_videos = 2
-run_local = False
+cloud = True
 
 # Creating video id list:
 print("\n")
@@ -55,18 +55,26 @@ for each in id_list:
 print("---------------------\n")
 print(f"Finished generating images for '{game}' gameplay\n")
 
-if run_local = False:
+if cloud == True:
 
-    #CALL upload_img: bucket creation, uploading, etc.
+    # Call upload_img: bucket creation, uploading, etc.
     #print(f"Finished uploading '{game}' images to Google Cloud\n")
-    breakpoint
 
+    print("breakpoint!!!! aqui habria subido los archivos al bucket, pero aun estarian en ordenador")
+    print("chequear que todavia esten en ordenador")
 
-    #CALL delete_data: delete local images and videos.
-    delete()
+    breakpoint()
 
+    # Call delete_data: delete local images and videos.
+    delete_vid(path='temp_videos')
+    delete_img(path=output_path)
+    print(f"\nFinished deleting local images and videos for '{game}'\n")
 
-#print(f"Finished deleting local images and videos for '{game}'\n")
+else:
+
+    #CALL delete_data: delete local images videos, keep images
+    delete_vid(path='temp_videos')
+    print(f"Finished deleting local videos for '{game}'. Kept images.\n")
 
 print("---------------------\n")
 print("SCRAPING PROCESS FINISHED")
