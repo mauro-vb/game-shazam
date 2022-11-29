@@ -18,10 +18,10 @@ def load_data(path, data_folder = 'raw', nb_imgs=1100):
 
     for f in folders:
         print(f'Fetching {f} images...')
-        for i in range(nb_imgs):
+        for filename in os.listdir(f):
 
             try:
-                n_path = os.path.join(path, data_folder, f, f'image_{i}.png')
+                n_path = os.path.join(path, data_folder, f, filename)
 
                 X.append(imread(n_path)[:, :, :3])
 
