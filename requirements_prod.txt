@@ -1,0 +1,11 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+scikit-image
+
+
+# api
+fastapi
+python-multipart
+uvicorn
