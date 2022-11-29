@@ -41,6 +41,36 @@ def get_data_generator(path:str,
 
     return data_generator
 
+def get_test_generator(path:str,
+                       rescale=1.5/10,
+                       rotation_range=40,
+                       width_height_shift=0.3,
+                       shear_zoom_range=0.2,
+                       brightness_range=0.0,
+                       fill_mode='nearest',
+                       batch_size=32,
+                       target_size=IMG_SIZE):
+
+    datagen = ImageDataGenerator(
+        rescale=rescale,
+        rotation_range=rotation_range,
+        width_shift_range=width_height_shift,
+        height_shift_range=width_height_shift,
+        shear_range=shear_zoom_range,
+        zoom_range=shear_zoom_range,
+        brightness_range=brightness_range,
+        fill_mode=fill_mode)
+
+    data_generator = datagen.flow_from_directory(
+        path,
+        target_size=target_size,
+        batch_size=batch_size,
+        class_mode='categorical')
+
+    print('\n   GOT A TEST SET DATA GENERATOR\n')
+
+    return data_generator
+
 def preprocess_features(path:str):
 
     data = []
