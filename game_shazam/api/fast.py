@@ -14,7 +14,7 @@ async def root():
     return {"status": "ok"}
 
 
-@app.post("/files/")
+@app.post("/predict/")
 async def create_file(img: UploadFile=File(...)):
     ### Receiving and decoding the image
     contents = await img.read()
@@ -26,3 +26,17 @@ async def create_file(img: UploadFile=File(...)):
     for i, p in enumerate(pred):
         if p == 1:
             return dict(prediction=GAMES_DICT[i])
+
+@app.post("/predict_proba/")
+async def create_file(img: UploadFile=File(...)):
+    ### Receiving and decoding the image
+    contents = await img.read()
+
+    nparr = np.fromstring(contents, np.uint8)
+    np_img = imread(nparr)
+    pr_img = preprocess_features(np_img)
+    pred = app.state.model.predict_proba(pr_img)
+    proba = dict()
+    for i, p in enumerate(pred):
+        proba[GAMES_DICT[i]] = p
+    return proba
