@@ -4,6 +4,7 @@ from game_shazam.model_target.local_model import save_local_model
 
 import os
 import time
+import glob
 from google.cloud import storage
 
 from tensorflow.keras import Model, models
@@ -52,4 +53,11 @@ def load_model(save_copy_locally=False):
         client = storage.Client()
         bucket = client.bucket(os.environ.get("BUCKET_NAME"))
         blob = bucket.blob(os.environ.get("GCS_MODEL"))
-        blob.download_to_filename()
+        blob.download_to_filename(os.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL")))
+
+        model = models.load_model(os.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL")))
+
+        if not save_copy_locally:
+            os.remove(os.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL")))
+
+        return model
