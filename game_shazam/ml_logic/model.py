@@ -18,7 +18,7 @@ def initialize_model():
     model.add(layers.MaxPool2D(pool_size=(2, 2)))
     # 3
     model.add(layers.Conv2D(64, kernel_size=3, padding='same', activation='relu'))
-    model.add(layers.Conv2D(64, kernel_size=3, padding='same', activation='relu'))
+    #model.add(layers.Conv2D(64, kernel_size=3, padding='same', activation='relu'))
     model.add(layers.MaxPool2D(pool_size=(2, 2)))
     # 4
     model.add(layers.Conv2D(128, kernel_size=2, activation='relu'))
@@ -48,19 +48,22 @@ def compile_model(model, learning_rate=0.01):
 
 def train_model(model,
                 data_generator,
-                patience=2,
+                val_generator,
+                patience=100,
                 epochs=150,
-                steps_per_epoch=4):
+                steps_per_epoch=2):
     """
     Fit model and return a the tuple (fitted_model, history)
     """
     print('\n   TRAINING MODEL\n')
     es = EarlyStopping(monitor='accuracy',
                        patience=patience,
-                       restore_best_weights=True)
+                       restore_best_weights=True,)
 
     history = model.fit(data_generator,
+                        validation_data=val_generator,
                         steps_per_epoch=steps_per_epoch,
+                        validation_steps=2,
                         epochs=epochs,
                         verbose=1,
                         callbacks=[es])
@@ -75,8 +78,8 @@ def evaluate_data_gen(model,data_gen):
                              verbose=1,
                              return_dict=True)
 
-    loss = metrics["categorical_crossentropy"]
-    accuracy = metrics["acuracy"]
+    loss = metrics["val"]
+    accuracy = metrics["accuracy"]
 
     print(f"\n✅ model evaluated: loss {round(loss, 2)} mae {round(accuracy, 2)}")
 
