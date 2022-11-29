@@ -1,8 +1,7 @@
 data/
 *.ipynb
 .DS_Store
-
-
+.python_version
 
 
 
@@ -163,3 +162,6 @@ cython_debug/
 #api
 .env
 .env.yaml
+*.mp4
+*.jpg
+.env

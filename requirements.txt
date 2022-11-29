@@ -24,3 +24,7 @@ pyarrow
 colorama
 
 split-folders
+google-api-python-client
+google-cloud-storage
+pytube
+opencv-python
