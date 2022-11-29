@@ -36,7 +36,7 @@ def get_ids(game: str):
 			# extracting ids
             id = item['id']['videoId']
             vid_ids.append(id)
-            print(f"Got video ID successfully: {id}")
+            print(f"Got video ID: {id}")
 
 		# repeat again
         if 'nextPageToken' in response and count < 2:
