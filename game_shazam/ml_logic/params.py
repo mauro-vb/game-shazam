@@ -11,3 +11,6 @@ GAMES_DICT  = {
     8: 'Roblox',
     9: 'Terraria'
     }
+
+IMG_SIZE = (224,224)
+IMG_VECTOR = (224,224,3)
