@@ -1,6 +1,6 @@
 data/
 *.ipynb
-
+.DS_Store
 
 
 

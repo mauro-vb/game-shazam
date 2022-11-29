@@ -11,3 +11,9 @@ GAMES_DICT  = {
     8: 'Roblox',
     9: 'Terraria'
     }
+<<<<<<< HEAD
+=======
+
+IMG_SIZE = (224,224)
+IMG_VECTOR = (224,224,3)
+>>>>>>> origin/model
