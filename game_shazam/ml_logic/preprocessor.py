@@ -1,8 +1,7 @@
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from ml_logic.params import IMG_VECTOR
 import numpy as np
 from skimage.transform import resize
-from ml_logic.params import GAMES_DICT, IMG_SIZE
+from game_shazam.ml_logic.params import GAMES_DICT, IMG_SIZE, IMG_VECTOR
 import os
 import cv2
 
@@ -12,7 +11,6 @@ def get_data_generator(path:str,
                        rotation_range=40,
                        width_height_shift=0.3,
                        shear_zoom_range=0.2,
-                       brightness_range=0.0,
                        validation_split=0.3,
                        fill_mode='nearest',
                        batch_size=32,
@@ -29,7 +27,6 @@ def get_data_generator(path:str,
         height_shift_range=width_height_shift,
         shear_range=shear_zoom_range,
         zoom_range=shear_zoom_range,
-        brightness_range=brightness_range,
         validation_split=validation_split,
         fill_mode=fill_mode)
 
@@ -46,7 +43,6 @@ def get_test_generator(path:str,
                        rotation_range=40,
                        width_height_shift=0.3,
                        shear_zoom_range=0.2,
-                       brightness_range=0.0,
                        fill_mode='nearest',
                        batch_size=32,
                        target_size=IMG_SIZE):
@@ -58,7 +54,6 @@ def get_test_generator(path:str,
         height_shift_range=width_height_shift,
         shear_range=shear_zoom_range,
         zoom_range=shear_zoom_range,
-        brightness_range=brightness_range,
         fill_mode=fill_mode)
 
     data_generator = datagen.flow_from_directory(

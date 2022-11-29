@@ -3,7 +3,7 @@ from matplotlib.pyplot import imread
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 
-def load_data(path, data_folder = 'raw', nb_imgs=1100):
+def load_data(path, data_folder = 'raw'):
     '''
     Function loading our data into image and target
     '''

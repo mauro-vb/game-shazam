@@ -1,6 +1,6 @@
 from tensorflow.keras import layers, models, optimizers
 from tensorflow.keras.callbacks import EarlyStopping
-from ml_logic.params import IMG_VECTOR
+from game_shazam.ml_logic.params import IMG_VECTOR
 
 def initialize_model():
     '''Initialize Neural Network'''
@@ -66,3 +66,18 @@ def train_model(model,
                         callbacks=[es])
     print('\n   MODEL WAS TRAINED\n')
     return model, history
+
+def evaluate_data_gen(model,data_gen):
+    '''Evaluates model through a data generator'''
+
+
+    metrics = model.evaluate(data_gen,
+                             verbose=1,
+                             return_dict=True)
+
+    loss = metrics["categorical_crossentropy"]
+    accuracy = metrics["acuracy"]
+
+    print(f"\n✅ model evaluated: loss {round(loss, 2)} mae {round(accuracy, 2)}")
+
+    return metrics
