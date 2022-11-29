@@ -1,6 +1,7 @@
 from tensorflow.keras import layers, models, optimizers
 from tensorflow.keras.callbacks import EarlyStopping
 from game_shazam.ml_logic.params import IMG_VECTOR
+from tensorflow.keras.applications.vgg16 import VGG16
 
 def initialize_model():
     '''Initialize Neural Network'''
@@ -37,7 +38,7 @@ def initialize_model():
 
     return model
 
-def compile_model(model, learning_rate=0.01):
+def compile_model(model, learning_rate=0.001):
     '''
     Compile the neural network
     '''
@@ -49,7 +50,7 @@ def compile_model(model, learning_rate=0.01):
 def train_model(model,
                 data_generator,
                 val_generator,
-                patience=100,
+                patience=25,
                 epochs=150,
                 steps_per_epoch=2):
     """
@@ -84,3 +85,21 @@ def evaluate_data_gen(model,data_gen):
     print(f"\n✅ model evaluated: loss {round(loss, 2)} mae {round(accuracy, 2)}")
 
     return metrics
+
+def initialize_VGG16_model(trainable=True):
+
+    model = VGG16(weights="imagenet", include_top=False, input_shape=IMG_VECTOR)
+    model.trainable = trainable
+    flatten_layer = layers.Flatten()
+    dense_layer = layers.Dense(200, activation='relu')
+    prediction_layer = layers.Dense(10, activation='softmax')
+
+
+    model = models.Sequential([
+        model,
+        flatten_layer,
+        dense_layer,
+        prediction_layer
+    ])
+
+    return model
