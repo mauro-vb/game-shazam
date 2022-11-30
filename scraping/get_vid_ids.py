@@ -21,7 +21,7 @@ def get_ids(game: str):
     # retrieve youtube video results
     response=youtube.search().list(
     part='snippet',
-    q=f'{game} gameplay'
+    q=f'{game} gameplay no commentary'
     ).execute()
     count = 0
 
