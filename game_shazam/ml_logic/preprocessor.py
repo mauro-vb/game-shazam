@@ -65,8 +65,27 @@ def preprocess_features(path:str):
     print('\n   DATA HAS BEEN PREPROCESSED\n')
     return data
 
-def resize_img(path:str):
+def prep_for_pred(path:str):
 
-    img =  resize(cv2.imread(path),IMG_VECTOR)
+    my_image = load_img(path, target_size=IMG_SIZE)
+    #preprocess the image
+    my_image = img_to_array(my_image)
+    my_image = my_image.reshape((1, my_image.shape[0], my_image.shape[1], my_image.shape[2]))
+    my_image = preprocess_input(my_image)
 
-    return np.array([img])
+    return my_image
+
+
+from keras.utils import load_img, img_to_array
+from keras.applications.vgg16 import preprocess_input
+
+#load the image
+my_image = load_img('/content/sample_data/test/AV4GuJX9Ssx5QTa9oaYUk6.jpg', target_size=(224, 224))
+plt.imshow(my_image)
+#preprocess the image
+my_image = img_to_array(my_image)
+my_image = my_image.reshape((1, my_image.shape[0], my_image.shape[1], my_image.shape[2]))
+my_image = preprocess_input(my_image)
+
+#make the prediction
+prediction = model.predict(my_image)
