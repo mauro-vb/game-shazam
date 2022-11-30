@@ -4,6 +4,8 @@ from skimage.transform import resize
 from game_shazam.ml_logic.params import GAMES_DICT, IMG_SIZE, IMG_VECTOR
 import os
 import cv2
+from keras.utils import load_img, img_to_array
+from keras.applications.vgg16 import preprocess_input
 
 data_gen = ImageDataGenerator()
 
@@ -64,3 +66,13 @@ def preprocess_features(path:str):
 
     print('\n   DATA HAS BEEN PREPROCESSED\n')
     return data
+
+def prep_for_pred(path:str):
+
+    my_image = load_img(path, target_size=IMG_SIZE)
+    #preprocess the image
+    my_image = img_to_array(my_image)
+    my_image = my_image.reshape((1, my_image.shape[0], my_image.shape[1], my_image.shape[2]))
+    my_image = preprocess_input(my_image)
+
+    return my_image

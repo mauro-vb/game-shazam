@@ -1,8 +1,9 @@
+ipdb
 numpy
 pandas
 matplotlib
-scikit-learn
 scikit-image
+opencv-python
 
 
 # api
@@ -14,5 +15,8 @@ uvicorn
 google-cloud-bigquery<3.0.0
 google-cloud-storage
 pyarrow
-
 colorama
+
+split-folders
+
+pytest-shutil

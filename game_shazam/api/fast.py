@@ -1,9 +1,9 @@
 from fastapi import FastAPI, File, UploadFile
 from game_shazam.ml_logic.registry import load_model
-from game_shazam.ml_logic.preprocessor import preprocess_features
+from game_shazam.ml_logic.preprocessor import prep_for_pred
 from game_shazam.ml_logic.params import GAMES_DICT
 import numpy as np
-from matplotlib.pyplot import imread
+import os
 
 app = FastAPI()
 app.state.model = load_model()
@@ -15,28 +15,20 @@ async def root():
 
 
 @app.post("/predict/")
-async def create_file(img: UploadFile=File(...)):
-    ### Receiving and decoding the image
-    contents = await img.read()
+async def create_file(img: bytes =File(...)):
 
-    nparr = np.fromstring(contents, np.uint8)
-    np_img = imread(nparr)
-    pr_img = preprocess_features(np_img)
-    pred = app.state.model.predict(pr_img)
-    for i, p in enumerate(pred):
-        if p == 1:
-            return dict(prediction=GAMES_DICT[i])
+    with open('image.jpg','wb') as image:
+        image.write(img)
+        image.close()
+    X = prep_for_pred('image.jpg')
+    os.remove('image.jpg')
+    pred = app.state.model.predict(X)
+    result = dict()
+    for i, p in enumerate(pred[0]):
+        result[GAMES_DICT[i]] = float(p)
 
-@app.post("/predict_proba/")
-async def create_file(img: UploadFile=File(...)):
-    ### Receiving and decoding the image
-    contents = await img.read()
+    best = np.max(pred)
+    position = pred[0].tolist().index(best)
 
-    nparr = np.fromstring(contents, np.uint8)
-    np_img = imread(nparr)
-    pr_img = preprocess_features(np_img)
-    pred = app.state.model.predict_proba(pr_img)
-    proba = dict()
-    for i, p in enumerate(pred):
-        proba[GAMES_DICT[i]] = p
-    return proba
+    response = dict(probs=result,best=GAMES_DICT[position])
+    return response

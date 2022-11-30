@@ -16,9 +16,8 @@ def save_cloud_model(model, suffix):
 
         # list model files
         files = glob.glob(f"{model_path}/**/*.*", recursive=True)
-        breakpoint()
         for file in files:
-            storage_filename = '/'.join(file.split('/')[4:])#[17:]
+            storage_filename = '/'.join(file.split('/')[3:])#[17:]
             print(storage_filename)
             client = storage.Client()
             bucket = client.bucket(os.environ.get("BUCKET_NAME"))

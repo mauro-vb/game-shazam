@@ -3,6 +3,7 @@ from game_shazam.model_target.cloud_model import save_cloud_model
 from game_shazam.model_target.local_model import save_local_model
 
 import os
+import shutil
 import time
 import glob
 from google.cloud import storage
@@ -51,13 +52,19 @@ def load_model(save_copy_locally=False):
 
     if os.environ.get("MODEL_TARGET") == "gcs":
         client = storage.Client()
-        bucket = client.bucket(os.environ.get("BUCKET_NAME"))
-        blob = bucket.blob(os.environ.get("GCS_MODEL"))
-        blob.download_to_filename(os.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL")))
+        blobs = client.list_blobs(os.environ.get("BUCKET_NAME"))
+        pickle_folder = os.path.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL"))
+        if not os.path.isdir(pickle_folder):
+            os.mkdir(pickle_folder)
+            os.mkdir(os.path.join(pickle_folder, 'assets'))
+            os.mkdir(os.path.join(pickle_folder, 'variables'))
 
-        model = models.load_model(os.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL")))
+        for blob in blobs:
+            blob.download_to_filename(os.path.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", blob.name))
+
+        model = models.load_model(os.path.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL")))
 
         if not save_copy_locally:
-            os.remove(os.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL")))
+            shutil.rmtree(os.path.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL")))
 
         return model
