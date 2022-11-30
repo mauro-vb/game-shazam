@@ -4,6 +4,14 @@ COPY game_shazam /game_shazam
 COPY requirements_prod.txt /requirements.txt
 COPY Makefile /Makefile
 
+RUN mkdir loaded_models
+
+RUN apt-get update
+RUN apt-get install \
+  'ffmpeg'\
+  'libsm6'\
+  'libxext6'  -y
+
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 

@@ -24,3 +24,7 @@ pyarrow
 colorama
 
 split-folders
+
+pytest-shutil
+
+opencv-python
