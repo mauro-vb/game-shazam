@@ -100,7 +100,8 @@ games = ['among us',
          'genshin impact',
          'minecraft',
          'roblox',
-         'terraria'
+         'terraria',
+         'god of war'
          ]
 
 speed_games = ['god of war']
