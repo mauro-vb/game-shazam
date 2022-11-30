@@ -5,7 +5,8 @@ def delete_vid(path):
         # construct full file path
         file = path + file_name
         if os.path.isfile(file):
-            print('Deleting file:', file)
+            print('Deleting file:\n', file)
+            print("")
             os.remove(file)
 
 def delete_img(path):

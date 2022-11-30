@@ -1,14 +1,14 @@
 import cv2
 #print(cv2.__version__) # WE CAN HAVE DIFFERENT VERSIONS!
 
-def extract_frames(pathIn:str, pathOut:str, ident:str):
+def extract_frames(pathIn:str, pathOut:str, ident:str, gamename: str):
     '''receives
     pathIn video file path
     pathOut to screenshots
     id from the video id list
     creates image files in pathOut folder'''
     # print("got into extract frames")
-    count = 0
+    count = 1
     vidcap = cv2.VideoCapture(pathIn)
     success,image = vidcap.read()
     success = True
@@ -22,3 +22,6 @@ def extract_frames(pathIn:str, pathOut:str, ident:str):
             count = count + 1
         except:
             continue
+    print("---------------------\n")
+    print(f"Finished generating images for '{gamename}' gameplay.\n")
+    return count

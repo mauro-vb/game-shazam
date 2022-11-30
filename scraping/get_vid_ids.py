@@ -46,6 +46,6 @@ def get_ids(game: str):
                     ).execute()
         else:
             break
-    print(f"\nFinished retrieving IDs for '{game}'\n")
+    print(f"\nFinished retrieving IDs for '{game}'.\n")
     print("---------------------\n")
     return vid_ids
