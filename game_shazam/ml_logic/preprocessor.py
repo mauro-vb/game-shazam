@@ -64,3 +64,9 @@ def preprocess_features(path:str):
 
     print('\n   DATA HAS BEEN PREPROCESSED\n')
     return data
+
+def resize_img(path:str):
+
+    img =  resize(cv2.imread(path),IMG_VECTOR)
+
+    return np.array([img])
