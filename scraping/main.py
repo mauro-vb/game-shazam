@@ -8,8 +8,8 @@ from get_vid_ids import get_ids
 ### MAIN ###
 
 # Admin input, comes from YTscrape script:
-game = "tetris"
-n_videos = 3
+game = "god of war"
+n_videos = 5
 max_lenght = 0 # Implement: check lenght of video and skip if it is over max_lenght (timedate or just plain secs)
 max_images = 2000
 cloud = False
@@ -23,8 +23,8 @@ print(f"Downloading and performing image extraction on {n_videos} videos:\n")
 # Snake Case for use in folder names later:
 game_snk = snake(game)
 
-vid_path = "/home/julian/code/mauro-vb/game-shazam/scraping/temp_videos/"
-img_path = f"/home/julian/code/mauro-vb/game-shazam/scraping/imgs/{game_snk}/"
+vid_path = os.path.join(os.getcwd(),'data','tmp','')
+img_path = os.path.join(os.getcwd(),'data','scraped',game_snk,'')
 
 # Check if it exists
 itExist = os.path.exists(img_path)

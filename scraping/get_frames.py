@@ -20,8 +20,10 @@ def extract_frames(pathIn:str, pathOut:str, ident:str, gamename: str):
             # print ('Reading frame: ', success)
             cv2.imwrite(pathOut + f"{ident}_frame%d.jpg" % count, image) # save frame as JPEG file
             count = count + 1
+        
         except:
             continue
+
     print("---------------------\n")
     print(f"Finished generating images for '{gamename}' gameplay.\n")
     return count
