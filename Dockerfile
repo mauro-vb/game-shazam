@@ -4,8 +4,6 @@ COPY game_shazam /game_shazam
 COPY requirements_prod.txt /requirements.txt
 COPY Makefile /Makefile
 
-RUN mkdir loaded_models
-
 RUN apt-get update
 RUN apt-get install \
   'ffmpeg'\
@@ -14,5 +12,9 @@ RUN apt-get install \
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
+RUN mkdir game_shazam/loaded_models
+RUN mkdir loaded_models
+
 
 CMD uvicorn game_shazam.api.fast:app --host 0.0.0.0 --reload --port ${PORT}

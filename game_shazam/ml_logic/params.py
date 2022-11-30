@@ -18,3 +18,5 @@ IMG_VECTOR = (224,224,3)
 
 LOCAL_DATA_PATH = os.path.expanduser(os.environ.get("LOCAL_DATA_PATH"))
 LOCAL_REGISTRY_PATH = os.path.expanduser(os.environ.get("LOCAL_REGISTRY_PATH"))
+
+N_CATS = os.path.expanduser(os.environ.get("N_CATS"))

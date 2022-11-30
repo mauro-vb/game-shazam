@@ -54,11 +54,14 @@ def load_model(save_copy_locally=False):
         client = storage.Client()
         blobs = client.list_blobs(os.environ.get("BUCKET_NAME"))
         pickle_folder = os.path.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL"))
+        print(pickle_folder)
+        print(os.getcwd())
         if not os.path.isdir(pickle_folder):
             os.mkdir(pickle_folder)
+            print('created folder')
             os.mkdir(os.path.join(pickle_folder, 'assets'))
             os.mkdir(os.path.join(pickle_folder, 'variables'))
-
+        print(os.getcwd())
         for blob in blobs:
             blob.download_to_filename(os.path.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", blob.name))
 

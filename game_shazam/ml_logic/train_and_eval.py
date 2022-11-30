@@ -5,15 +5,15 @@ from game_shazam.ml_logic.model import *
 
 
 def main():
-        #train_data_generator = get_data_generator(os.path.join(LOCAL_DATA_PATH, "train"))
-        #val_data_generator = get_val_generator(os.path.join(LOCAL_DATA_PATH, "val"))
+        train_data_generator = get_data_generator(os.path.join(LOCAL_DATA_PATH, "train"))
+        val_data_generator = get_val_generator(os.path.join(LOCAL_DATA_PATH, "val"))
 
-        model = load_model()
+        model = initialize_big_model()
 
-        #model = compile_model(model)
+        model = compile_model(model)
 
-        #train_model(model, train_data_generator, val_data_generator, epochs=1)
+        train_model(model, train_data_generator, val_data_generator)
 
-        #save_model(model)
+        save_model(model)
 
 main()
