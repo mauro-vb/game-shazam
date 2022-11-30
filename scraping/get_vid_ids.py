@@ -4,16 +4,20 @@
 from googleapiclient.discovery import build
 import os
 
+
 api_key = os.getenv('YOUTUBE_API_KEY')
 
 def get_ids(game: str):
     '''returns a list of video ids to call later
     in the main function'''
 
+    count = 1
+
     print(f"Retrieving video IDs for '{game}'...\n")
 
     # empty list for storing ids
     vid_ids = []
+    vid_lens = []
 
     # creating youtube resource object
     youtube = build('youtube', 'v3',developerKey=api_key)
@@ -23,7 +27,6 @@ def get_ids(game: str):
     part='snippet',
     q=f'{game} gameplay no commentary'
     ).execute()
-    count = 0
 
     # iterate video response
     while response:
@@ -31,21 +34,31 @@ def get_ids(game: str):
 		# extracting required info
 		# from each result object
         count+=1
-        for item in response['items']:
 
+        for item in response['items']:
 			# extracting ids
-            id = item['id']['videoId']
-            vid_ids.append(id)
-            print(f"Got video ID: {id}")
+            try:
+                id = item['id']['videoId']
+                details_response = youtube.videos().list(
+                    id=id,
+                    part='contentDetails').execute()
+
+                length = details_response['items'][0]['contentDetails']['duration']
+                vid_ids.append(id)
+                vid_lens.append(length)
+                print(f"Got video ID: {id} with length {length}")
+            except:
+                continue
 
 		# repeat again
         if 'nextPageToken' in response and count < 2:
             response = youtube.search().list(
                     part='snippet',
-                    q=f'{game} gameplay'
+                    q=f'{game} gameplay no commmentary'
                     ).execute()
         else:
             break
     print(f"\nFinished retrieving IDs for '{game}'.\n")
     print("---------------------\n")
-    return vid_ids
+
+    return vid_ids, vid_lens
