@@ -1,17 +1,18 @@
+from game_shazam.ml_logic.params import LOCAL_DATA_PATH
+from game_shazam.ml_logic.registry import save_model
 from game_shazam.ml_logic.preprocessor import *
 from game_shazam.ml_logic.model import *
 
-train_path = '/Users/mauro/code/game-shazam/data/train_val/train'
-val_path = '/Users/mauro/code/game-shazam/data/train_val/val'
 
 def main():
-        train_data_generator = get_data_generator(train_path)
-        val_data_generator = get_val_generator(val_path)
+        train_data_generator = get_data_generator(os.path.join(LOCAL_DATA_PATH, "train"))
+        val_data_generator = get_val_generator(os.path.join(LOCAL_DATA_PATH, "val"))
 
-        model = initialize_VGG16_model()
+        model = initialize_model()
         model = compile_model(model)
 
-        train_model(model, train_data_generator, val_data_generator)
+        train_model(model, train_data_generator, val_data_generator, epochs=1)
 
-        print(model.evaluate(val_data_generator))
+        save_model(model)
+
 main()

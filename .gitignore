@@ -1,4 +1,6 @@
 data/
+mlops/
+*.pickle
 *.ipynb
 .DS_Store
 
