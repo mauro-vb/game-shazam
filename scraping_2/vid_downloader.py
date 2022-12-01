@@ -11,14 +11,14 @@ def save_video_locally(vid_id:str,vidPath:str,game_name:str) -> str:
     '''
     Saves video onto specified repository
     '''
-
+    downloaded = False
     start_time = time.time()
     filename = f'{vid_id}.mp4'
     if any(fnmatch.fnmatchcase(file, vid_id + '*.jpg') for file in os.listdir(os.path.join(FRAMES_PATH,game_name))):
 
         print('\n',vid_id, ' was already in folder.')
 
-        downloaded = False
+
     else:
         print(f"\nDownloading video {vid_id}...\n")
         yt = YouTube(f'https://www.youtube.com/watch?v={vid_id}')
