@@ -8,6 +8,10 @@ def main():
         train_data_generator = get_data_generator(os.path.join(LOCAL_DATA_PATH, "train"))
         val_data_generator = get_val_generator(os.path.join(LOCAL_DATA_PATH, "val"))
 
+        #test_data = get_val_generator(os.path.join(LOCAL_DATA_PATH, "test"))
+        #model = load_model()
+        #evaluate_data_gen(model, test_data)
+        #print(train_data_generator.class_indices)
         model = initialize_big_model()
 
         model = compile_model(model)

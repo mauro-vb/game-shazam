@@ -79,10 +79,10 @@ def evaluate_data_gen(model,data_gen):
                              verbose=1,
                              return_dict=True)
 
-    loss = metrics["val"]
+    loss = metrics["loss"]
     accuracy = metrics["accuracy"]
 
-    print(f"\n✅ model evaluated: loss {round(loss, 2)} mae {round(accuracy, 2)}")
+    print(f"\n✅ model evaluated: loss {round(loss, 2)} accuracy {round(accuracy, 2)}")
 
     return metrics
 
@@ -108,22 +108,23 @@ def initialize_big_model(trainable=True):
 
     print('\n   INITIALIZING MODEL\n')
 
-    model = VGG16(weights="imagenet", include_top=False, input_shape=IMG_VECTOR)
-    model.trainable = trainable
+    vgg = VGG16(weights="imagenet", include_top=False, input_shape=IMG_VECTOR)
+    vgg.trainable = trainable
 
-    model = models.Sequential()
+    model = models.Sequential(
+        [vgg])
 
     ### Convolution & MaxPooling
     # 1
     model.add(layers.Conv2D(16, kernel_size=4, activation='relu', padding='same', input_shape=IMG_VECTOR))
-    model.add(layers.MaxPool2D(pool_size=(2, 2)))
+    #model.add(layers.MaxPool2D(pool_size=(2, 2)))
     # 2
     model.add(layers.Conv2D(32, kernel_size=3, padding='same', activation='relu'))
     model.add(layers.MaxPool2D(pool_size=(2, 2)))
     # 3
-    model.add(layers.Conv2D(64, kernel_size=3, padding='same', activation='relu'))
     #model.add(layers.Conv2D(64, kernel_size=3, padding='same', activation='relu'))
-    model.add(layers.MaxPool2D(pool_size=(2, 2)))
+    #model.add(layers.Conv2D(64, kernel_size=3, padding='same', activation='relu'))
+    #model.add(layers.MaxPool2D(pool_size=(2, 2)))
     # 4
     model.add(layers.Conv2D(128, kernel_size=2, activation='relu'))
     model.add(layers.MaxPool2D(pool_size=(2, 2)))

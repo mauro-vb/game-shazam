@@ -52,22 +52,25 @@ def load_model(save_copy_locally=False):
 
     if os.environ.get("MODEL_TARGET") == "gcs":
         client = storage.Client()
-        blobs = client.list_blobs(os.environ.get("BUCKET_NAME"))
-        pickle_folder = os.path.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL"))
+        bucket = client.get_bucket(os.environ.get("BUCKET_NAME"))
+        blobs = bucket.list_blobs(prefix=os.environ.get("GCS_MODEL"))
+        pickle_folder = os.environ.get("GCS_MODEL")
         print(pickle_folder)
-        print(os.getcwd())
+        print(os.listdir())
         if not os.path.isdir(pickle_folder):
             os.mkdir(pickle_folder)
             print('created folder')
             os.mkdir(os.path.join(pickle_folder, 'assets'))
             os.mkdir(os.path.join(pickle_folder, 'variables'))
+        print(os.listdir())
         print(os.getcwd())
         for blob in blobs:
-            blob.download_to_filename(os.path.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", blob.name))
+            open(blob.name, 'xb')
+            blob.download_to_filename(blob.name)
 
-        model = models.load_model(os.path.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL")))
+        model = models.load_model(os.environ.get("GCS_MODEL"))
 
         if not save_copy_locally:
-            shutil.rmtree(os.path.join(os.environ.get("LOCAL_REGISTRY_PATH"), "loaded_models", os.environ.get("GCS_MODEL")))
+            shutil.rmtree(os.environ.get("GCS_MODEL"))
 
         return model

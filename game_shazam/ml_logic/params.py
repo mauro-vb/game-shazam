@@ -1,17 +1,16 @@
 import os
 
-GAMES_DICT  = {
-    0: 'AmongUs',
-    1: 'ApexLegends',
-    2: 'Fortnite',
-    3: 'ForzaHorizon',
-    4: 'FreeFire',
-    5: 'GenshinImpact',
-    6: 'GodofWar',
-    7: 'Minecraft',
-    8: 'Roblox',
-    9: 'Terraria'
-    }
+GAMES_DICT  = {'Among Us': 0,
+               'Apex Legends': 1,
+               'Fortnite': 2,
+               'Forza Horizon': 3,
+               'Free Fire': 4,
+               'Genshin Impact': 5,
+               'God of War': 6,
+               'Minecraft': 7,
+               'Roblox': 8,
+               'Terraria': 9
+            }
 
 IMG_SIZE = (224,224)
 IMG_VECTOR = (224,224,3)
