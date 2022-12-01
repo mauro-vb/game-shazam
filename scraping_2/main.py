@@ -33,10 +33,13 @@ def main():
 
             if seconds_to_hours(c_duration) < MAX_DURATION:
                 # download
-                save_video_locally(c_id,VID_PATH)
+                downloaded = save_video_locally(c_id,VID_PATH,snake_game)
                 # get frammes
-                current_frames += extract_frames(vid_path=VID_PATH,vid_id=c_id,frames_path=frames_folder,vid_duration=c_duration)
-                delete_video(VID_PATH,vid_id=c_id)
+                if downloaded:
+                    current_frames += extract_frames(vid_path=VID_PATH,vid_id=c_id,frames_path=frames_folder,vid_duration=c_duration)
+                    delete_video(VID_PATH,vid_id=c_id)
+                else:
+                    pass
 
             indx += 1
         print('--------------------')

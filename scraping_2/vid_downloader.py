@@ -2,34 +2,43 @@
 from pytube import YouTube
 import time
 import os
+from scraping_2.params import FRAMES_PATH
+import fnmatch
 
-def save_video_locally(vid_id:str,vidPath:str) -> str:
+
+
+def save_video_locally(vid_id:str,vidPath:str,game_name:str) -> str:
     '''
     Saves video onto specified repository
     '''
+
     start_time = time.time()
     filename = f'{vid_id}.mp4'
+    if any(fnmatch.fnmatchcase(file, vid_id + '*.jpg') for file in os.listdir(os.path.join(FRAMES_PATH,game_name))):
 
-    print(f"\nDownloading video {vid_id}...\n")
+        print('\n',vid_id, ' was already in folder.')
 
-    yt = YouTube(f'https://www.youtube.com/watch?v={vid_id}')
+        downloaded = False
+    else:
+        print(f"\nDownloading video {vid_id}...\n")
+        yt = YouTube(f'https://www.youtube.com/watch?v={vid_id}')
 
-    try:
-        yt.streams.filter(progressive=True,
-                        file_extension='mp4').order_by('resolution').asc().first(
-                            ).download(
-                                output_path = vidPath,
-                                filename=filename,
-                                skip_existing = True,
-                                timeout = None,
-                                max_retries = 0)
+        try:
+            yt.streams.filter(progressive=True,
+                            file_extension='mp4').order_by('resolution').asc().first(
+                                ).download(
+                                    output_path = vidPath,
+                                    filename=filename,
+                                    skip_existing = True,
+                                    timeout = None,
+                                    max_retries = 0)
 
-        print(f'Video {vid_id} succesfully downloaded (time: {time.time() - start_time})')
+            print(f'Video {vid_id} succesfully downloaded (time: {time.time() - start_time})')
+            downloaded = True
+        except:
+            pass
 
-    except:
-        pass
-
-    return None
+    return downloaded
 
 def delete_video(vid_path:str, vid_id:str) -> None:
     '''
