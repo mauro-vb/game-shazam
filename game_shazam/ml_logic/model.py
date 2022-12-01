@@ -111,8 +111,6 @@ def initialize_big_model(trainable=True):
     model = VGG16(weights="imagenet", include_top=False, input_shape=IMG_VECTOR)
     model.trainable = trainable
 
-    model = models.Sequential()
-
     ### Convolution & MaxPooling
     # 1
     model.add(layers.Conv2D(16, kernel_size=4, activation='relu', padding='same', input_shape=IMG_VECTOR))
