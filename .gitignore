@@ -3,7 +3,7 @@ mlops/
 *.pickle
 *.ipynb
 .DS_Store
-
+params.py
 *.zip
 
 
