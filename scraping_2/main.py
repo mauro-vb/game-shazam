@@ -15,7 +15,7 @@ def main():
 
         # define variables for each game
         snake_game = '_'.join(game.replace('_', ' ').split()).lower()
-        current_frames = len(os.listdir(os.path.join(FRAMES_PATH,snake_game)))
+
         frames_folder = os.path.join(FRAMES_PATH,snake_game,'')
 
         itExist = os.path.exists(frames_folder)
@@ -25,7 +25,7 @@ def main():
             print(f"New directory created for {game} images.\n")
 
         indx = 0
-
+        current_frames = len(os.listdir(os.path.join(FRAMES_PATH,snake_game)))
         while FRAMES_PER_G > current_frames:
 
             c_id = ids[indx]
