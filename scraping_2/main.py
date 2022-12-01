@@ -15,7 +15,7 @@ def main():
 
         # define variables for each game
         snake_game = '_'.join(game.replace('_', ' ').split()).lower()
-        current_frames = 0
+        current_frames = len(os.listdir(os.path.join(FRAMES_PATH,snake_game)))
         frames_folder = os.path.join(FRAMES_PATH,snake_game,'')
 
         itExist = os.path.exists(frames_folder)
