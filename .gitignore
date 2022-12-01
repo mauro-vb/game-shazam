@@ -3,6 +3,7 @@ data/
 .DS_Store
 .python_version
 
+.zip
 
 
 # Byte-compiled / optimized / DLL files
