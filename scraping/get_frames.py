@@ -15,13 +15,19 @@ def extract_frames(pathIn:str, pathOut:str, ident:str, gamename: str):
     while success:
         try:
             # print("got into while, try")
-            vidcap.set(cv2.CAP_PROP_POS_MSEC,(count*5000)) # each 5 seconds
+            vidcap.set(cv2.CAP_PROP_POS_MSEC,(count*10000)) # each 10 seconds
             success,image = vidcap.read()
             # print ('Reading frame: ', success)
             cv2.imwrite(pathOut + f"{ident}_frame%d.jpg" % count, image) # save frame as JPEG file
             count = count + 1
         except:
             continue
-    print("---------------------\n")
-    print(f"Finished generating images for '{gamename}' gameplay.\n")
-    return count
+    # return count
+
+
+
+#TO USE:
+# extract_frames(
+#     pathIn="/home/julian/code/mauro-vb/game-shazam/scraping/temp_videos/valorant_bcZFHEf76Xk.mp4",
+#     pathOut="/home/julian/code/mauro-vb/game-shazam/scraping/imgs/valorant/",
+#     ident="bcZFHEf76Xk", gamename="asd")

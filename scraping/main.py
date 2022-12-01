@@ -8,15 +8,16 @@ from get_vid_ids import get_ids
 ### MAIN ###
 
 # Admin input, comes from YTscrape script:
-game = "tetris"
-n_videos = 3
+game = "Valorant"
+query = "gameplay no commentary"
+n_videos = 6
 max_lenght = 0 # Implement: check lenght of video and skip if it is over max_lenght (timedate or just plain secs)
-max_images = 2000
+max_images = 2000 # Implement
 cloud = False
 
 # Creating video id list:
 print("\n")
-id_list = get_ids(game)
+id_list = get_ids(game, query)
 id_list = id_list[:n_videos] # to correct: should limit no. of videos in funct, not at this stage
 print(f"Downloading and performing image extraction on {n_videos} videos:\n")
 
@@ -50,14 +51,18 @@ for each in id_list:
                 # Ordered by resolution, taking just the first, no timeout
                 # These features could be changed by admin if needed
 
+        count_videos += 1
         print("Extracting frames...\n")
         get_frames.extract_frames(f"{vid_path}{game_snk}_{each}.mp4",
                                    img_path, ident=each, gamename=game)
-        count_videos += 1
+
 
 
     except:
         continue
+
+print("---------------------\n")
+print(f"Finished generating images for '{game}' gameplay.\n")
 
 if cloud == True:
 

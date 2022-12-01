@@ -6,7 +6,7 @@ import os
 
 api_key = os.getenv('YOUTUBE_API_KEY')
 
-def get_ids(game: str):
+def get_ids(game: str, query:str):
     '''returns a list of video ids to call later
     in the main function'''
 
@@ -21,7 +21,7 @@ def get_ids(game: str):
     # retrieve youtube video results
     response=youtube.search().list(
     part='snippet',
-    q=f'{game} gameplay'
+    q=f'{game} {query}'
     ).execute()
     count = 0
 
