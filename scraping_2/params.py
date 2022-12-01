@@ -1,27 +1,19 @@
 import os
 
-GAMES = ['world of warcraft']
+GAMES = ["Age of Empires 4",
+"Animal Crossing: New Horizons",
+"Ark: Survival Evolved",
+"Assassin's Creed Odyssey"]
 
-GAMES1 = ['among us',
-         'apex legends',
-         'fortnite',
-         'forza horizon',
-         'free fire',
-         'genshin impact',
-         'minecraft',
-         'roblox',
-         'terraria',
-         'god of war']
+FRAMES_PER_V = 200
 
-FRAMES_PER_V = 500
+FRAMES_PER_G = 5000
 
-FRAMES_PER_G = 400
+MAX_DURATION = 5
 
-MAX_DURATION = 1
+API_KEY = "AIzaSyAWT_IeNUwTTDs5IK389or1YKJlukCA8FU"
 
-API_KEY = 'AIzaSyCeCk-QRaS9-6HsAaSp52Wme4fHq29UPok'
-
-FRAMES_PER_MINUTE = 6
+FRAMES_PER_MINUTE = 8
 
 VID_PATH = os.path.join(os.getcwd(),'data','tmp','')
 
