@@ -2,15 +2,10 @@ import os
 
 GAMES1 = ['world of warcraft']
 
-GAMES = ['free fire',
-         'genshin impact',
-         'minecraft',
-         'roblox',
-         'terraria',
-         'god of war',
-         'Dead by Deadlight',
+GAMES = ['Dead by Deadlight',
          'Dota 2',
-         'Fall Guys']
+         'Fall Guys',
+         'League of Legends']
 
 FRAMES_PER_V = 500
 

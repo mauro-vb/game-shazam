@@ -4,7 +4,7 @@ mlops/
 *.ipynb
 .DS_Store
 
-
+*.zip
 
 
 
