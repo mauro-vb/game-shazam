@@ -20,14 +20,15 @@ def get_ids(game: str) -> list:
         maxResults='50',
         q=f'{game} gameplay no commentary').execute()
 
+    #breakpoint()
     while response:
-        for item in response['item']:
+        for item in response['items']:
             try:
                 vid_id = item['id']['videoId']
                 ids.append(vid_id)
             except:
                 continue
-
+        break
     print(f"\nFinished retrieving IDs for '{game}'.\n")
     print("---------------------\n")
 

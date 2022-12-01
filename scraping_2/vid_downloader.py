@@ -27,10 +27,14 @@ def save_video_locally(vid_id:str,vidPath:str) -> str:
 
     return None
 
-def delete_video(vid_path:str) -> None:
+def delete_video(vid_path:str, vid_id:str) -> None:
     '''
     Deletes file given its path
     '''
-    os.remove(vid_path)
+    path_to_vid = os.path.join(vid_path,f'{vid_id}.mp4')
+    try:
+        os.remove(path_to_vid)
+    except:
+        pass
 
     return None

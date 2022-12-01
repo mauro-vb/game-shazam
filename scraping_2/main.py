@@ -14,17 +14,17 @@ def main():
         # define variables for each game
         snake_game = '_'.join(game.replace('_', ' ').split()).lower()
         current_frames = 0
-        frames_foler = os.path.join(FRAMES_PATH,snake_game)
-
+        frames_folder = os.path.join(FRAMES_PATH,snake_game)
+        breakpoint()
         # Iterate over ids to download, get frames and delete
-        while FRAMES_PER_G < current_frames:
+        while FRAMES_PER_G > current_frames:
             for vid_id in ids:
                 # download
                 save_video_locally(vid_id,VID_PATH)
                 # get frammes
-                current_frames += extract_frames(vid_path=VID_PATH,frames_path=frames_foler)
+                current_frames += extract_frames(vid_path=VID_PATH,vid_id=vid_id,frames_path=frames_folder)
                 delete_video(VID_PATH)
         print('--------------------')
-        print(f'\nDOWNLOADED {current_frames} FRAMES FOR {game}')
+        print(f"\nDOWNLOADED {current_frames} FRAMES FOR '{game}'")
 
 main()

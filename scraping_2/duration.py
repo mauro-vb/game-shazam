@@ -10,7 +10,7 @@ def get_duration(video_id:str) -> int:
 
     youtube = build('youtube', 'v3',developerKey=API_KEY)
 
-    response = youtube.videos().list(id=id,
+    response = youtube.videos().list(id=video_id,
                                       part='contentDetails').execute()
 
     length = parse_duration(response['items'][0]['contentDetails']['duration'])
@@ -18,4 +18,4 @@ def get_duration(video_id:str) -> int:
     # Getting lenght in seconds
     length = length.time.hours * 3600 + length.time.minutes * 60 + length.time.seconds
 
-    return length
+    return int(length)

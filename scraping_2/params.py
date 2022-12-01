@@ -26,3 +26,5 @@ FRAMES_PER_MINUTE = 6
 VID_PATH = os.path.join(os.getcwd(),'data','tmp','')
 
 FRAMES_PATH = os.path.join(os.getcwd(),'data','scraped')
+
+VID_CROPPING = 12000 # in miliseconds
