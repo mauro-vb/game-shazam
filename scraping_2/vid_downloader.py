@@ -36,6 +36,7 @@ def delete_video(vid_path:str, vid_id:str) -> None:
 
     try:
         os.remove(path_to_vid)
+        print(f'\nRemoved video successfully (id: {vid_id})')
     except:
         pass
 

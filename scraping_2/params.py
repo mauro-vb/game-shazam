@@ -1,27 +1,26 @@
 import os
 
-GAMES = ['world of warcraft']
+GAMES1 = ['world of warcraft']
 
-GAMES1 = ['among us',
-         'apex legends',
-         'fortnite',
-         'forza horizon',
-         'free fire',
+GAMES = ['free fire',
          'genshin impact',
          'minecraft',
          'roblox',
          'terraria',
-         'god of war']
+         'god of war',
+         'Dead by Deadlight',
+         'Dota 2',
+         'Fall Guys']
 
 FRAMES_PER_V = 500
 
-FRAMES_PER_G = 400
+FRAMES_PER_G = 5000
 
-MAX_DURATION = 1
+MAX_DURATION = 5
 
 API_KEY = 'AIzaSyCeCk-QRaS9-6HsAaSp52Wme4fHq29UPok'
 
-FRAMES_PER_MINUTE = 6
+FRAMES_PER_MINUTE = 8
 
 VID_PATH = os.path.join(os.getcwd(),'data','tmp','')
 
