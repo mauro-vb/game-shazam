@@ -1,20 +1,17 @@
-from scraping_2.duration import get_duration
 import random as rd
 import cv2
 import os
 from scraping_2.params import FRAMES_PER_MINUTE, VID_CROPPING
 
-def extract_frames(vid_path:str,frames_path:str,vid_id:str):
+def extract_frames(vid_path:str,frames_path:str,vid_id:str,vid_duration):
     '''
     saves frames from a video path,
     saving it as id of video
     and returns number of frames extracted
     '''
-    #breakpoint()
+
     path_to_vid = os.path.join(vid_path,f'{vid_id}.mp4')
     vidcap = cv2.VideoCapture(path_to_vid)
-
-    vid_duration = get_duration(vid_id)
 
     start = VID_CROPPING
     end = vid_duration * 1000 - VID_CROPPING
@@ -34,6 +31,6 @@ def extract_frames(vid_path:str,frames_path:str,vid_id:str):
             continue
 
     print("---------------------\n")
-    print(f"Finished generating {count} images for video of {vid_duration} seconds.\n\AT {frames_path}\n")
+    print(f"Finished generating {count} images for video of {vid_duration} seconds.\nAT {frames_path}")
 
     return count

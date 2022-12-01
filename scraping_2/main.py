@@ -2,7 +2,9 @@ import os
 from scraping_2.video_ids import get_ids
 from scraping_2.sampling import extract_frames
 from scraping_2.vid_downloader import save_video_locally, delete_video
-from scraping_2.params import GAMES, VID_PATH, FRAMES_PATH, FRAMES_PER_G
+from scraping_2.duration import get_duration, seconds_to_hours
+
+from scraping_2.params import GAMES, VID_PATH, FRAMES_PATH, FRAMES_PER_G, MAX_DURATION
 
 def main():
 
@@ -14,16 +16,29 @@ def main():
         # define variables for each game
         snake_game = '_'.join(game.replace('_', ' ').split()).lower()
         current_frames = 0
-        frames_folder = os.path.join(FRAMES_PATH,snake_game)
-        breakpoint()
-        # Iterate over ids to download, get frames and delete
+        frames_folder = os.path.join(FRAMES_PATH,snake_game,'')
+
+        itExist = os.path.exists(frames_folder)
+        if not itExist:
+        # Create a new directory because it does not exist
+            os.makedirs(frames_folder)
+            print(f"New directory created for {game} images.\n")
+
+        indx = 0
+
         while FRAMES_PER_G > current_frames:
-            for vid_id in ids:
+
+            c_id = ids[indx]
+            c_duration = get_duration(c_id)
+
+            if seconds_to_hours(c_duration) < MAX_DURATION:
                 # download
-                save_video_locally(vid_id,VID_PATH)
+                save_video_locally(c_id,VID_PATH)
                 # get frammes
-                current_frames += extract_frames(vid_path=VID_PATH,vid_id=vid_id,frames_path=frames_folder)
-                delete_video(VID_PATH)
+                current_frames += extract_frames(vid_path=VID_PATH,vid_id=c_id,frames_path=frames_folder,vid_duration=c_duration)
+                delete_video(VID_PATH,vid_id=c_id)
+
+            indx += 1
         print('--------------------')
         print(f"\nDOWNLOADED {current_frames} FRAMES FOR '{game}'")
 

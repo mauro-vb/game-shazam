@@ -31,7 +31,9 @@ def delete_video(vid_path:str, vid_id:str) -> None:
     '''
     Deletes file given its path
     '''
+
     path_to_vid = os.path.join(vid_path,f'{vid_id}.mp4')
+
     try:
         os.remove(path_to_vid)
     except:

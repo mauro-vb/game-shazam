@@ -1,6 +1,6 @@
 import os
 
-GAMES = ['mario party']
+GAMES = ['world of warcraft']
 
 GAMES1 = ['among us',
          'apex legends',
@@ -15,9 +15,9 @@ GAMES1 = ['among us',
 
 FRAMES_PER_V = 500
 
-FRAMES_PER_G = 250
+FRAMES_PER_G = 400
 
-MAX_DURATION = 5
+MAX_DURATION = 1
 
 API_KEY = 'AIzaSyCeCk-QRaS9-6HsAaSp52Wme4fHq29UPok'
 

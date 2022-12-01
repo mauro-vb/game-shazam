@@ -19,3 +19,7 @@ def get_duration(video_id:str) -> int:
     length = length.time.hours * 3600 + length.time.minutes * 60 + length.time.seconds
 
     return int(length)
+
+
+def seconds_to_hours(seconds:int)-> float:
+    return seconds * 0.000277778
