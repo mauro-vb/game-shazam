@@ -24,11 +24,12 @@ async def create_file(img: bytes =File(...)):
     os.remove('image.jpg')
     pred = app.state.model.predict(X)
     result = dict()
+    key_list = list(GAMES_DICT.keys())
     for i, p in enumerate(pred[0]):
-        result[GAMES_DICT[i]] = float(p)
+        result[key_list[i]] = float(p)
 
     best = np.max(pred)
     position = pred[0].tolist().index(best)
 
-    response = dict(probs=result,best=GAMES_DICT[position])
+    response = dict(probs=result,best=key_list[position])
     return response
