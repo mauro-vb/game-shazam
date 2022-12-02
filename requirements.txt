@@ -3,3 +3,4 @@ google-cloud-storage
 pytube
 opencv-python
 streamlit
+wikipedia
