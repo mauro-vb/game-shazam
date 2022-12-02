@@ -31,18 +31,19 @@ def main():
             c_id = ids[indx]
             c_duration = get_duration(c_id)
 
-            if seconds_to_hours(c_duration) < MAX_DURATION:
+            if (seconds_to_hours(c_duration) < MAX_DURATION) and (seconds_to_hours(c_duration)>0.08):
                 # download
                 downloaded = save_video_locally(c_id,VID_PATH,snake_game)
                 # get frammes
                 if downloaded:
                     current_frames += extract_frames(vid_path=VID_PATH,vid_id=c_id,frames_path=frames_folder,vid_duration=c_duration)
                     delete_video(VID_PATH,vid_id=c_id)
+
                 else:
                     pass
-
             indx += 1
+
         print('--------------------')
-        print(f"\nDOWNLOADED {current_frames} FRAMES FOR '{game}'")
+        print(f"\nCURRENTLY HAVE {current_frames} FRAMES FOR '{game}'")
 
 main()

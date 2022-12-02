@@ -18,7 +18,8 @@ def get_ids(game: str) -> list:
     response=youtube.search().list(
         part='snippet',
         maxResults='50',
-        q=f'{game} gameplay no commentary').execute()
+        #order='title',
+        q=f'{game} gameplay').execute()
 
     #breakpoint()
     while response:
