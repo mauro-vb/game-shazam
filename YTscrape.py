@@ -53,8 +53,29 @@ while True:
     elif keypress2 == "d":
         break
 
-
 # USER INPUTS GAME LIST
+print("\n")
+print("Prompt: nombre y enter, dos enter para terminar")
+print("(Warning! For better performance, do not exceed 4 titles)")
+print("\n")
+
+inp_list = []
+while True:
+    prompt = "-->"
+    inp = input()
+    inp_list.append(inp)
+    print ("\033[A" + prompt + "\033[1K")
+    keypress3 = readkey()
+    if keypress3 == key.ENTER:
+        break
+
+print(inp_list)
+
+# poner except?
+# luego imprimir la lista para ver que onda, poner mensaje de comprbacion tipo 'esta es tu lista'
+
+
+# OTHER INPUT METHOD
 # print("\n")
 # print("Enter a list of titles to retrieve screenshots from, separated by commas, as such:")
 # print("'Fortnite, Plants vs. Zombies 2, Minecraft, Counter Strike: Global Offensive,'")
@@ -63,26 +84,6 @@ while True:
 # input_string = input()
 # game_list = input_string.split(",")
 # game_list = [game.strip() for game in game_list]
-
-# OTHER INPUT METHOD
-# print("\n")
-# print("Prompt: nombre y enter, dos enter para terminar")
-# print("(Warning! For better performance, do not exceed 4 titles)")
-# while True:
-#     inp_list = []
-#
-#     try:
-#
-#         inp = input()
-#         inp_list.append(inp)
-#         keypress3 = readkey()
-#        if keypress3 == key.ENTER:
-#             break
-# poner except?
-# luego imprimir la lista para ver que onda, poner mensaje de comprbacion tipo 'esta es tu lista'
-
-
-
 
 ## VERSION NUEVA, POST MAURO:
 # Promtear al usuario para que pase una lista de juegos, poner "warning! no pasar mas de 3 o 4"
