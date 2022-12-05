@@ -33,6 +33,8 @@ def main():
             except:
                 print('-------------------------------\n')
                 print("All videos for 1 call were scraped, please change prompt or parameters to get more videos.")
+                break
+
             c_duration = get_duration(c_id)
 
             if (seconds_to_hours(c_duration) < MAX_DURATION) and (seconds_to_hours(c_duration)>0.08):
