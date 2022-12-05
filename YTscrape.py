@@ -29,21 +29,20 @@ print("\n\n\n")
 while True:
     keypress1 = readkey()
     if keypress1 == "h":
-        print("here comes the help") #call help function
+        help_call()
+        print("        PRESS 'S' TO START, 'E' TO EXIT")
     elif keypress1 == "s":
         break
     elif keypress1 == "e":
         os._exit(1)
 
-print("here comes the main program") # DO THE MAIN PROGRAM
+# DO THE MAIN PROGRAM
+print("\n\n\n")
+print("Press 'T' to enter your Youtube API key, 'D' to use the default one")
+print("For more information on ")
 
 
 ## VERSION NUEVA, POST MAURO:
-# help_about como funcion aparte
-# en help ponemos 'game shazam' v1.0 by nuestros nombres
-# y abajo una explicacion de que es y como funciona muy resumidamente
-# entre otras cosas como sacar tu api youtube data key
-# luego press S to start, Q to quit (esto por fuera de la funcion, claro)
 
 # press t to enter your youtube token api etc
 # or d to use the default one

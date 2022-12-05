@@ -19,7 +19,7 @@ def get_ids(game: str) -> list:
         part='snippet',
         maxResults='50',
         #order='title',
-        q=f'{game}').execute()
+        q=f'{game} gameplay').execute()
 
     #breakpoint()
     while response:
