@@ -28,7 +28,11 @@ def main():
         current_frames = len(os.listdir(os.path.join(FRAMES_PATH,snake_game)))
         while FRAMES_PER_G > current_frames:
 
-            c_id = ids[indx]
+            try:
+                c_id = ids[indx]
+            except:
+                print('-------------------------------\n')
+                print("All videos for 1 call were scraped, please change prompt or parameters to get more videos.")
             c_duration = get_duration(c_id)
 
             if (seconds_to_hours(c_duration) < MAX_DURATION) and (seconds_to_hours(c_duration)>0.08):
