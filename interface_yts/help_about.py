@@ -1,10 +1,10 @@
 from interface_yts.clear_screen import clear
-
+from interface_yts.under_construction import underconstr
 
 def help_call():
     clear()
-    print("-- Help function called --")
-    print("-- Going back to main program --")
+    underconstr()
+    print("\nFeature under construction")
 
 
 # en help ponemos 'game shazam' v1.0 by nuestros nombres

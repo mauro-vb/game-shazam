@@ -30,7 +30,6 @@ def extract_frames(vid_path:str,frames_path:str,vid_id:str,vid_duration):
         except:
             continue
 
-    print("---------------------\n")
-    print(f"Finished generating {count} images for video of {vid_duration} seconds.\nAT {frames_path}")
+    print(f"Finished extracting {count} frames from video of {vid_duration} seconds.\n@ {frames_path}\n")
 
     return count

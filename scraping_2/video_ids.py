@@ -2,7 +2,7 @@ from scraping_2.duration import get_duration
 from googleapiclient.discovery import build
 from scraping_2.params import API_KEY
 
-def get_ids(game: str) -> list:
+def get_ids(game: str, query: str, api_key: str) -> list:
     '''
     Returns a list of video ids to call later
     '''
@@ -19,7 +19,7 @@ def get_ids(game: str) -> list:
         part='snippet',
         maxResults='50',
         #order='title',
-        q=f'{game} gameplay').execute()
+        q=f'{game} {query}').execute()
 
     #breakpoint()
     while response:
@@ -30,7 +30,6 @@ def get_ids(game: str) -> list:
             except:
                 continue
         break
-    print(f"\nFinished retrieving IDs for '{game}'.\n")
-    print("---------------------\n")
+    print(f"Finished retrieving {len(ids)} IDs for '{game}'.\n")
 
     return ids
