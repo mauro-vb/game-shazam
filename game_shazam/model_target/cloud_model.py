@@ -25,3 +25,23 @@ def save_cloud_model(model, suffix):
             blob.upload_from_filename(file)
 
         print(Fore.BLUE + "\nSave model to GCP bucket..." + Style.RESET_ALL)
+
+
+def upload_to_cloud(model_path):
+        if model_path:
+        # list model files
+            files = glob.glob(f"{model_path}/**/*.*", recursive=True)
+            for file in files:
+                storage_filename = '/'.join(file.split('/')[3:])#[17:]
+                print(storage_filename)
+                client = storage.Client()
+                bucket = client.bucket(os.environ.get("BUCKET_NAME"))
+                blob = bucket.blob(storage_filename)
+                blob.upload_from_filename(file)
+
+            print(Fore.BLUE + "\nSave model to GCP bucket..." + Style.RESET_ALL)
+
+if __name__ == '__main__':
+    print('Input model path:\n')
+    path = input()
+    upload_to_cloud(model_path=path)

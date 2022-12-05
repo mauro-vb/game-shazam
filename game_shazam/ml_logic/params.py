@@ -1,15 +1,12 @@
 import os
 
-GAMES_DICT  = {'Among Us': 0,
-               'Apex Legends': 1,
+GAMES_DICT  = {'Dead by deadlight': 0,
+               'Dota 2': 1,
                'Fortnite': 2,
                'Forza Horizon': 3,
-               'Free Fire': 4,
-               'Genshin Impact': 5,
-               'God of War': 6,
-               'Minecraft': 7,
-               'Roblox': 8,
-               'Terraria': 9
+               'Hearthstone': 4,
+               'Minecraft': 5,
+               'Rocket League': 6
             }
 
 IMG_SIZE = (224,224)

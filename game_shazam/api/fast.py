@@ -1,7 +1,9 @@
 from fastapi import FastAPI, File, UploadFile
 from game_shazam.ml_logic.registry import load_model
 from game_shazam.ml_logic.preprocessor import prep_for_pred
-from game_shazam.ml_logic.params import GAMES_DICT
+from game_shazam.ml_logic.params import GAMES_DICT, IMG_SIZE
+from tensorflow.keras.utils import load_img, img_to_array
+from tensorflow import expand_dims
 import numpy as np
 import os
 
@@ -20,9 +22,11 @@ async def create_file(img: bytes =File(...)):
     with open('image.jpg','wb') as image:
         image.write(img)
         image.close()
-    X = prep_for_pred('image.jpg')
+    img = load_img('image.jpg', target_size=IMG_SIZE)
+    img_array = img_to_array(img) / 255
+    img_array = expand_dims(img_array, 0)
     os.remove('image.jpg')
-    pred = app.state.model.predict(X)
+    pred = app.state.model.predict(img_array)
     result = dict()
     key_list = list(GAMES_DICT.keys())
     for i, p in enumerate(pred[0]):
