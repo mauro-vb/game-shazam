@@ -39,20 +39,49 @@ while True:
 # DO THE MAIN PROGRAM
 clear()
 print("\n")
-print("Press 'K' to enter your Youtube Data API key, 'D' to use the default one")
-print("For more information on Youtube API keys, please check the Help function in the main menu")
+print("Press 'K' to enter your Youtube Data API key, 'D' to use the default one.")
+print("For more information on Youtube API keys, please check the Help function in the main menu.")
+print("\n")
 
 while True:
-    keypress1 = readkey()
-    if keypress1 == "k":
+    keypress2 = readkey()
+    if keypress2 == "k":
         print("\n")
         user_api_key = input("Enter your API key: ")
         print("Feature not implemented")
         os._exit(1)
-    elif keypress1 == "d":
+    elif keypress2 == "d":
         break
 
-print("\n")
+
+# USER INPUTS GAME LIST
+# print("\n")
+# print("Enter a list of titles to retrieve screenshots from, separated by commas, as such:")
+# print("'Fortnite, Plants vs. Zombies 2, Minecraft, Counter Strike: Global Offensive,'")
+# print("(Warning! For better performance, do not exceed 4 titles)")
+# print("\n")
+# input_string = input()
+# game_list = input_string.split(",")
+# game_list = [game.strip() for game in game_list]
+
+# OTHER INPUT METHOD
+# print("\n")
+# print("Prompt: nombre y enter, dos enter para terminar")
+# print("(Warning! For better performance, do not exceed 4 titles)")
+# while True:
+#     inp_list = []
+#
+#     try:
+#
+#         inp = input()
+#         inp_list.append(inp)
+#         keypress3 = readkey()
+#        if keypress3 == key.ENTER:
+#             break
+# poner except?
+# luego imprimir la lista para ver que onda, poner mensaje de comprbacion tipo 'esta es tu lista'
+
+
 
 
 ## VERSION NUEVA, POST MAURO:
