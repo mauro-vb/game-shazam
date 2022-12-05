@@ -25,7 +25,7 @@ print("        PRESS 'S' TO START, 'H' FOR HELP/ABOUT")
 print("        OR 'E' TO EXIT")
 print("\n\n\n")
 
-
+# START or HELP
 while True:
     keypress1 = readkey()
     if keypress1 == "h":
@@ -37,18 +37,25 @@ while True:
         os._exit(1)
 
 # DO THE MAIN PROGRAM
-print("\n\n\n")
-print("Press 'T' to enter your Youtube API key, 'D' to use the default one")
-print("For more information on ")
+clear()
+print("\n")
+print("Press 'K' to enter your Youtube Data API key, 'D' to use the default one")
+print("For more information on Youtube API keys, please check the Help function in the main menu")
+
+while True:
+    keypress1 = readkey()
+    if keypress1 == "k":
+        print("\n")
+        user_api_key = input("Enter your API key: ")
+        print("Feature not implemented")
+        os._exit(1)
+    elif keypress1 == "d":
+        break
+
+print("\n")
 
 
 ## VERSION NUEVA, POST MAURO:
-
-# press t to enter your youtube token api etc
-# or d to use the default one
-
-# for more information please check the help funciton in main menu
-
 # Promtear al usuario para que pase una lista de juegos, poner "warning! no pasar mas de 3 o 4"
 # que apriete enter cada vez que termine, y que al poner enter dos veces (o sea no text
 # en la ultima linea o algo asi, se considere al lista cerrada.
