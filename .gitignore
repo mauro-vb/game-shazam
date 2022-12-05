@@ -6,7 +6,9 @@ mlops/
 params.py
 *.zip
 
-
+*.jpeg
+*.jpg
+*.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
