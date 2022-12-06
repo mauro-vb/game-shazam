@@ -2,3 +2,10 @@
 *.jpg
 .env
 .python-version
+.DS_store
+*.ipynb
+data/
+game_shazam/
+initial_steps.ipynb
+scraping/.DS_Store
+scraping_2/params.py
