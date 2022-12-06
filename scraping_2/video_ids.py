@@ -30,6 +30,6 @@ def get_ids(game: str, query: str, api_key: str) -> list:
             except:
                 continue
         break
-    print(f"Finished retrieving {len(ids)} IDs for '{game}'.\n")
+    print(f"Finished retrieving {len(ids)} IDs for '{game} + {query}'.\n")
 
     return ids

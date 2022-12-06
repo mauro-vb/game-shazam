@@ -4,7 +4,15 @@ import time
 import os
 from scraping_2.params import FRAMES_PATH
 import fnmatch
+import sys
 
+# def progress(chunk: bytes, bytes_remaining: int):
+#     print("got into function")
+#     contentsize = chunk.filesize
+#     size = contentsize - bytes_remaining
+
+#     print('\r' + '[Download progress]:[%s%s]%.2f%%;' % (
+#     '█' * int(size*20/contentsize), ' '*(20-int(size*20/contentsize)), float(size/contentsize*100)), end='')
 
 
 def save_video_locally(vid_id:str,vidPath:str,game_name:str) -> str:
@@ -23,15 +31,19 @@ def save_video_locally(vid_id:str,vidPath:str,game_name:str) -> str:
         print(f"Downloading video {vid_id}...\n")
         yt = YouTube(f'https://www.youtube.com/watch?v={vid_id}')
 
-        # Set condition for waiting animation
         downloaded = False
-
         while downloaded == False:
             try:
-                yt.streams.filter(progressive=True,
-                                file_extension='mp4').order_by('resolution').asc().first(
-                                    ).download(
-                                        output_path = vidPath,
+                #get filesize externally
+                # file_size = yt.streams.filter(progressive=True,
+                # file_extension='mp4').order_by('resolution').asc().first(
+                #     ).filesize
+
+                #actually download
+                video = yt.streams.filter(progressive=True,
+                                file_extension='mp4').order_by('resolution').asc().first()
+
+                video.download(output_path = vidPath,
                                         filename=filename,
                                         skip_existing = True,
                                         timeout = None,
