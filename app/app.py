@@ -180,7 +180,7 @@ elif page == 'Contact and Suggestions':
     """
     st.write(FONT_SIZE_CSS, unsafe_allow_html=True)
     st.markdown("<h1 style='text-align: center; color: pink;'>Want to contact us?</h1>", unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align: center; color: white;'>Or is your favourite game simply mssing on our site?</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; color: white;'>Or is your favourite game simply missing on our site?</h2>", unsafe_allow_html=True)
     st.markdown("")
 
     st.markdown(f'''<p style='text-align: justify; color: white;'>
@@ -207,3 +207,4 @@ elif page == 'About Us':
     st.markdown("<h1 style='text-align: left; color: cyan;'>About Us</h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center; color: white;'>Developed by Julian, Roger and Mauro as a final project for the Data Science Course at Le Wagon Barcelona</h2>", unsafe_allow_html=True)
     st.markdown("<a href='https://www.lewagon.com/barcelona'>Le Wagon</a>", unsafe_allow_html=True)
+    st.image('app/IMG-20221207-WA0010-removebg-preview.png')
