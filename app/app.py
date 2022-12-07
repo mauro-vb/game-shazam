@@ -73,11 +73,11 @@ if page == 'Game-DETECTive':
     """
     st.write(FONT_SIZE_CSS, unsafe_allow_html=True)
     st.markdown("<h1 style='text-align: center; color: yellow;'>Game-DETECTive</h1>", unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align: center; color: white;'>We identify video games for you</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; color: white;'>Find your next game with a screenshot</h2>", unsafe_allow_html=True)
     st.markdown("")
 
-    st.markdown(f'''<p style='text-align: justify; color: white;'>
-                Upload an image, to see .</p>''', unsafe_allow_html=True)
+    # st.markdown(f'''<p style='text-align: justify; color: white;'>
+    #             Upload an image, to see .</p>''', unsafe_allow_html=True)
 
     st.markdown("---")
 
