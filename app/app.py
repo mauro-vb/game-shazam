@@ -25,7 +25,7 @@ st.set_page_config(
 st.sidebar.markdown(f"""
     #
     """)
-st.sidebar.image('/Users/mauro/Downloads/game_detective-removebg-preview.png',width=320)
+st.sidebar.image('/Users/mauro/code/game-shazam/app/game_detective-removebg-preview.png',width=320)
 
 page = st.sidebar.radio('', ('Game-DETECTive', 'Contact and Suggestions', 'About Us'))
 
