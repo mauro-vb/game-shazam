@@ -9,3 +9,4 @@ game_shazam/
 initial_steps.ipynb
 scraping/.DS_Store
 scraping_2/params.py
+.pyc
