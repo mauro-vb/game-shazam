@@ -138,7 +138,8 @@ if page == 'Game-DETECTive':
                 st.markdown("")
                 if st.button('''---🔍 Learn More 🔍---'''):
                     # embed streamlit docs in a streamlit app
-                    components.iframe(f"https://www.google.com/search?q={game_query}")
+                    # components.iframe(f"https://www.google.com/search?q={game_query}")
+                    st.markdown(f"<a href='https://www.google.com/search?q={game_query}'>   {first_choice}</a>", unsafe_allow_html=True)
 
 
 
