@@ -8,6 +8,7 @@ import wikipedia
 import json
 from results import show_results
 import pandas as pd
+import streamlit.components.v1 as components
 
 # from dotenv import load_dotenv
 
@@ -132,11 +133,12 @@ if page == 'Game-DETECTive':
                 ({first_prob} certainty)</h5>''',
                 unsafe_allow_html=True)
 
-
+                game_query = first_choice.replace(' ','+')
 
                 st.markdown("")
-                if st.button('''---🔍 Click here to see more guesses 🔍---'''):
-                    st.table(runner_ups)
+                if st.button('''---🔍 Learn More 🔍---'''):
+                    # embed streamlit docs in a streamlit app
+                    components.iframe(f"https://www.google.com/search?q={game_query}")
 
 
 
