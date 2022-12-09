@@ -3,31 +3,13 @@ from interface_yts.help_about import help_call
 from interface_yts.fauxbar import animation
 from interface_yts.clean_inputs import no_empty, only_num
 from interface_yts.under_construction import underconstr
+from interface_yts.title import call_title
 from readchar import readkey, key
 from scraping_2.main import scrape
 import os
 
-clear()
-print("\n\n\n")
-print('''
-         ██████╗  █████╗ ███╗   ███╗███████╗        ███████╗██╗  ██╗ █████╗ ███████╗ █████╗ ███╗   ███╗
-        ██╔════╝ ██╔══██╗████╗ ████║██╔════╝        ██╔════╝██║  ██║██╔══██╗╚══███╔╝██╔══██╗████╗ ████║
-        ██║  ███╗███████║██╔████╔██║█████╗          ███████╗███████║███████║  ███╔╝ ███████║██╔████╔██║
-        ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝          ╚════██║██╔══██║██╔══██║ ███╔╝  ██╔══██║██║╚██╔╝██║
-        ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗        ███████║██║  ██║██║  ██║███████╗██║  ██║██║ ╚═╝ ██║
-         ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝        ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
-                                                                                ''')
-
-print('''
-        +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+ +-+-+-+-+
-        |Y|O|U|T|U|B|E| |S|C|R|A|P|E|R| |T|O|O|L|
-        +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+ +-+-+-+-+
-''')
-
-print("\n\n\n")
-print("        PRESS 'S' TO START, 'H' FOR HELP/ABOUT")
-print("        OR 'E' TO EXIT")
-print("\n\n\n")
+# TITLE SCREEN
+call_title()
 
 # START or HELP
 while True:
