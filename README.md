@@ -1,7 +1,7 @@
 <h5> GAME DETECTIVE </h5>
 
 - We created and trained a deep learning model that can recognize over 40 videogame titles from screenshots. 
-- To do this we coded a scraping tool and created a database of over half a million images. 
+- To do this we coded a scraping tool and created a database of over half a million images, soon to be available.
 - You can check it out [here.](https://mauro-vb-game-shazam-appapp-streamlit-front-cezsjk.streamlit.app/)
 
 
