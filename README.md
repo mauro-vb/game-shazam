@@ -1,1 +1,1 @@
-##### Delete legacy folder 'scraping', all functions working in scraping_2
+##### Please delete legacy folder 'scraping', all functions working in scraping_2
